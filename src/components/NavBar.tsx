@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { SiGithub } from '@icons-pack/react-simple-icons'
+import { GitHubIcon } from '@/components/icons/BrandIcons';
 import type { SiteConfig } from '@/types'
 
 const NAV = [
@@ -43,7 +43,7 @@ export default function NavBar({ config }: { config: SiteConfig }) {
         <div className="hidden md:flex items-center gap-3">
           <a href={config.github} target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-3 py-1.5 label hover:text-ink-2 rounded-lg hover:bg-paper-warm transition-all">
-            <SiGithub size={13} /> GitHub
+            <GitHubIcon size={13} /> GitHub
           </a>
           <a href={`mailto:${config.email}`}
             className="px-4 py-2 bg-ink text-paper text-xs font-medium font-mono tracking-wider rounded-full hover:bg-ink-2 transition-colors duration-200">
@@ -68,7 +68,7 @@ export default function NavBar({ config }: { config: SiteConfig }) {
           <hr className="rule my-3" />
           <a href={config.github} target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-2 px-3 py-3 label">
-            <SiGithub size={13} /> GitHub
+            <GitHubIcon size={13} /> GitHub
           </a>
           <a href={`mailto:${config.email}`}
             className="mt-1 px-4 py-2.5 bg-ink text-paper text-xs font-mono tracking-wider rounded-full text-center">
