@@ -6,6 +6,7 @@ import HeroSection from './HeroSection'
 import FeaturedSlider from './FeaturedSlider'
 import ProjectModal from './ProjectModal'
 import AllProjectsSection from './AllProjects'
+import SkillsSection from './SkillsSection'
 
 interface Props {
   config: SiteConfig
@@ -29,6 +30,7 @@ export default function PortfolioHome({
           <FeaturedSlider projects={featuredProjects} onOpen={setSelected} />
         )}
         <AllProjectsSection projects={allProjects} onOpen={setSelected} />
+        <SkillsSection skills={skills} />
       </main>
       <ProjectModal project={selected} onClose={() => setSelected(null)} />
     </>
