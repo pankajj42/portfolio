@@ -2,6 +2,7 @@ import { config } from '@/content'
 import { resolveScreenshots } from '@/lib/screenshots'
 import NavBar from '@/components/NavBar'
 import HeroSection from '@/components/HeroSection'
+import FeaturedSlider from '@/components/FeaturedSlider'
 import type { Project } from '@/types'
 import { cacheLife } from 'next/cache'
 
@@ -16,26 +17,33 @@ async function getCachedProjects(): Promise<Project[]> {
   })
 
   return Promise.all(
-    config.projectOrder.map(async (p) => ({
-      ...p,
-      screenshots: await resolveScreenshots(p),
-    }))
+    config.projectOrder.map(async (p) => {
+      const screenshots = await resolveScreenshots(p)
+      console.log('Resolved project:',{
+        name: p.displayName,
+        screenshots: screenshots.length,
+      })
+      return {
+        ...p,
+        screenshots
+      }
+    })
   )
 }
 
 export default async function HomePage() {
   const allProjects: Project[] = await getCachedProjects()
+  const featuredIds = new Set(config.featuredProjects.map((p) => p.id))
+  const featuredProjects = allProjects.filter((p) => featuredIds.has(p.id))
 
-  console.log('Resolved projects:', allProjects.map(p => ({
-    name: p.displayName,
-    screenshots: p.screenshots.length,
-  })))
-  
   return (
     <>
       <NavBar config={config} />
       <main>
         <HeroSection config={config} />
+        {featuredProjects.length > 0 && (
+          <FeaturedSlider projects={featuredProjects} onOpen={() => {}} />
+        )}
       </main>
     </>
   )
