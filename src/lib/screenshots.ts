@@ -75,16 +75,11 @@ export async function getCachedProjects( config : SiteConfig ): Promise<Project[
   })
 
   return Promise.all(
-    config.projectOrder.map(async (p) => {
-      const screenshots = await resolveScreenshots(p)
-      console.log('Resolved project:',{
-        name: p.displayName,
-        screenshots: screenshots.length,
-      })
-      return {
+    config.projectOrder.map(
+      async (p) => ({
         ...p,
-        screenshots
-      }
-    })
+        screenshots: await resolveScreenshots(p)
+      })
+    )
   )
 }
