@@ -1,4 +1,5 @@
-import type { Project } from '@/types'
+import type { Project, SiteConfig } from '@/types'
+import { cacheLife } from 'next/cache'
 
 const GITHUB_RAW = 'https://raw.githubusercontent.com'
 const EXTENSIONS = ['png', 'jpg', 'jpeg', 'webp']
@@ -61,4 +62,29 @@ export async function resolveScreenshots(project: Project): Promise<string[]> {
 
   // 3. OG card fallback
   return [`https://opengraph.githubassets.com/1/${owner}/${repo}`]
+}
+
+// This function's returned promise will be cached for 5 minutes (300 seconds)
+export async function getCachedProjects( config : SiteConfig ): Promise<Project[]> {
+  'use cache' // Instructs Next.js to cache this scope
+  
+  cacheLife({
+    stale: 300,       // Keep the client-side router cache fresh for 5 minutes
+    revalidate: 300,  // Background refresh on server if requested after 5 minutes
+    expire: 3600      // Force hard reload of cache after 1 hour with no traffic
+  })
+
+  return Promise.all(
+    config.projectOrder.map(async (p) => {
+      const screenshots = await resolveScreenshots(p)
+      console.log('Resolved project:',{
+        name: p.displayName,
+        screenshots: screenshots.length,
+      })
+      return {
+        ...p,
+        screenshots
+      }
+    })
+  )
 }
