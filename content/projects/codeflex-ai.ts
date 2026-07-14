@@ -17,9 +17,7 @@ export const codeflexAiProject: Project = {
     'Clerk authentication with GitHub, Google, and email social login',
     'Multiple program support with one active program at a time',
   ],
-  screenshots: [
-    'https://raw.githubusercontent.com/pankajj42/codeflex.ai/main/public/screenshot-for-readme.png',
-  ],
+  screenshots: [],
   repository: 'https://github.com/pankajj42/codeflex.ai',
   liveUrl: 'https://codeflex-ai-umber.vercel.app',
 }
