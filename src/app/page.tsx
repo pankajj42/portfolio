@@ -1,8 +1,6 @@
-import { config } from '@/content'
+import { config, skills, experience } from '@/content'
 import { resolveScreenshots } from '@/lib/screenshots'
-import NavBar from '@/components/NavBar'
-import HeroSection from '@/components/HeroSection'
-import FeaturedSlider from '@/components/FeaturedSlider'
+import PortfolioHome from '@/components/PortfolioHome'
 import type { Project } from '@/types'
 import { cacheLife } from 'next/cache'
 
@@ -33,18 +31,18 @@ async function getCachedProjects(): Promise<Project[]> {
 
 export default async function HomePage() {
   const allProjects: Project[] = await getCachedProjects()
+  // config.featuredProjects does not have resolved screenshots,
+  // so we need to filter from allProjects to get the full data
   const featuredIds = new Set(config.featuredProjects.map((p) => p.id))
   const featuredProjects = allProjects.filter((p) => featuredIds.has(p.id))
 
   return (
-    <>
-      <NavBar config={config} />
-      <main>
-        <HeroSection config={config} />
-        {featuredProjects.length > 0 && (
-          <FeaturedSlider projects={featuredProjects} onOpen={() => {}} />
-        )}
-      </main>
-    </>
+    <PortfolioHome
+      config={config}
+      skills={skills}
+      experience={experience}
+      featuredProjects={featuredProjects}
+      allProjects={allProjects}
+    />
   )
 }
