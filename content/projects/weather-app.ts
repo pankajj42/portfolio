@@ -20,5 +20,5 @@ export const weatherAppProject: Project = {
   ],
   screenshots: [],
   repository: 'https://github.com/pankajj42/WeatherApp',
-  liveUrl: '',
+  liveUrl: 'https://weather-app-kappa-lilac-88.vercel.app/',
 }

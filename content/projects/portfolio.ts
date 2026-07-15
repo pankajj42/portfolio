@@ -22,5 +22,5 @@ export const portfolioProject: Project = {
   ],
   screenshots: [],
   repository: 'https://github.com/pankajj42/portfolio',
-  liveUrl: '',
+  liveUrl: 'https://pankajj42-portfolio.vercel.app/',
 }

@@ -23,5 +23,5 @@ export const ticketDashboardProject: Project = {
   ],
   screenshots: [],
   repository: 'https://github.com/pankajj42/TicketDashboard',
-  liveUrl: '',
+  liveUrl: 'https://ticketdashboard-b6g6.onrender.com/',
 }
