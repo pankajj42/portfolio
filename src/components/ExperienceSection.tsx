@@ -95,6 +95,29 @@ export default function ExperienceSection({ experience }: { experience: Experien
                 CGPA <strong className="text-ink">8.88</strong>
               </p>
             </motion.div>
+
+            {/* <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: 0.2 }}
+              className="border border-dashed border-edge rounded-2xl p-7 lg:p-9"
+            >
+              <p className="label-accent mb-4">Education</p>
+              <h4 className="font-display font-bold text-xl text-ink mb-2">
+                Class XII, Science (PCM)
+              </h4>
+              <p className="text-sm text-ink-2">
+                Indian School Muladha, Oman
+                <span className="text-ink-4 mx-2">·</span>
+                2012
+                <span className="text-ink-4 mx-2">·</span>
+                Centum in Mathematics
+                <span className="text-ink-4 mx-2">·</span>
+                <strong className="text-ink">93.4 %</strong>
+              </p>
+            </motion.div> */}
+
           </div>
         </div>
       </div>

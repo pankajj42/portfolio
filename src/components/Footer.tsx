@@ -53,7 +53,7 @@ export default function Footer({ config }: { config: SiteConfig }) {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-mono text-[11px] text-ink-3 tracking-wider">
-            © {new Date().getFullYear()} {config.name} · Next.js + Tailwind CSS v4
+            © 2026 {config.name} · Next.js + Tailwind CSS v4
           </p>
           <p className="font-mono text-[11px] text-ink-3 tracking-wider">
             MNIT Jaipur &apos;17 · Ex-Arista Networks
