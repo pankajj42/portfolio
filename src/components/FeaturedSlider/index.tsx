@@ -37,51 +37,72 @@ export default function FeaturedSlider({ projects, onOpen }: Props) {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <p className="label-accent mb-3">01 — Selected Work</p>
-            <h2 className="font-display font-bold text-ink"
-              style={{ fontSize: 'clamp(2.5rem, 5vw, 3.75rem)' }}>
-              Featured Projects
-            </h2>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="font-mono text-[0.6rem] text-ink-4 tracking-widest">
-              {String(sel + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
-            </span>
-            <div className="flex gap-2">
-              {[
-                { fn: () => api?.scrollPrev(), can: canP, icon: <ChevronLeft size={16} />, label: 'Prev' },
-                { fn: () => api?.scrollNext(), can: canN, icon: <ChevronRight size={16} />, label: 'Next' },
-              ].map(b => (
-                <button key={b.label} onClick={b.fn} disabled={!b.can} aria-label={b.label}
-                  className="w-10 h-10 rounded-full border border-edge flex items-center justify-center text-ink-2 hover:border-accent hover:text-accent hover:bg-accent-light disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-200">
-                  {b.icon}
-                </button>
+        <div className="mb-8">
+          <p className="label-accent mb-3">01 — Selected Work</p>
+          <h2 className="font-display font-bold text-ink"
+            style={{ fontSize: 'clamp(2.5rem, 5vw, 3.75rem)' }}>
+            Featured Projects
+          </h2>
+        </div>
+
+        {/* Carousel + overlay arrows */}
+        <div className="relative">
+
+          {/* ← Prev overlay button */}
+          <button
+            onClick={() => api?.scrollPrev()}
+            disabled={!canP}
+            aria-label="Previous project"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10
+                       w-10 h-10 rounded-full bg-paper-card border border-edge shadow-lift
+                       flex items-center justify-center text-ink-2
+                       hover:border-accent hover:text-accent hover:bg-accent-light
+                       disabled:opacity-0 disabled:pointer-events-none
+                       transition-all duration-200"
+          >
+            <ChevronLeft size={16} />
+          </button>
+
+          {/* Carousel */}
+          <div className="embla" ref={ref}>
+            <div className="embla__container" style={{ gap: '1.25rem', display: 'flex' }}>
+              {projects.map((p, i) => (
+                <div key={p.id} className="embla__slide" style={{ minHeight: 420 }}>
+                  <ProjectSlide project={p} onOpen={onOpen} active={i === sel} index={i} />
+                </div>
               ))}
             </div>
           </div>
+
+          {/* → Next overlay button */}
+          <button
+            onClick={() => api?.scrollNext()}
+            disabled={!canN}
+            aria-label="Next project"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10
+                       w-10 h-10 rounded-full bg-paper-card border border-edge shadow-lift
+                       flex items-center justify-center text-ink-2
+                       hover:border-accent hover:text-accent hover:bg-accent-light
+                       disabled:opacity-0 disabled:pointer-events-none
+                       transition-all duration-200"
+          >
+            <ChevronRight size={16} />
+          </button>
         </div>
 
-        {/* Carousel */}
-        <div className="embla" ref={ref}>
-          <div className="embla__container" style={{ gap: '1.5rem', display: 'flex' }}>
-            {projects.map((p, i) => (
-              <div key={p.id} className="embla__slide" style={{ minHeight: 560 }}>
-                <ProjectSlide project={p} onOpen={onOpen} active={i === sel} index={i} />
-              </div>
+        {/* Dot indicators + counter */}
+        <div className="flex items-center justify-center gap-3 mt-6">
+          <span className="font-mono text-[0.6rem] text-ink-4 tracking-widest">
+            {String(sel + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+          </span>
+          <div className="flex gap-2">
+            {projects.map((_, i) => (
+              <button key={i} onClick={() => api?.scrollTo(i)} aria-label={`Slide ${i + 1}`}
+                className={`rounded-full transition-all duration-300 ${
+                  i === sel ? 'w-6 h-1.5 bg-accent' : 'w-1.5 h-1.5 bg-edge-strong hover:bg-accent/50'
+                }`} />
             ))}
           </div>
-        </div>
-
-        {/* Dot indicators */}
-        <div className="flex justify-center gap-2 mt-8">
-          {projects.map((_, i) => (
-            <button key={i} onClick={() => api?.scrollTo(i)} aria-label={`Slide ${i + 1}`}
-              className={`rounded-full transition-all duration-300 ${
-                i === sel ? 'w-8 h-1.5 bg-accent' : 'w-1.5 h-1.5 bg-edge-strong hover:bg-accent/50'
-              }`} />
-          ))}
         </div>
       </div>
     </section>

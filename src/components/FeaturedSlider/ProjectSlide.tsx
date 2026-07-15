@@ -20,7 +20,7 @@ export default function ProjectSlide({ project, onOpen, active, index }: Props) 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] h-full">
 
           {/* ── Left: Info ─────────────────────────────────────────────── */}
-          <div className="flex flex-col p-8 lg:p-10 overflow-y-auto">
+          <div className="flex flex-col p-5 lg:p-7 overflow-y-auto">
             <p className="label-accent mb-5">
               {String(index + 1).padStart(2, '0')} — Featured Project
             </p>
@@ -90,7 +90,7 @@ export default function ProjectSlide({ project, onOpen, active, index }: Props) 
           </div>
 
           {/* ── Right: Screenshots ──────────────────────────────────────── */}
-          <div className="hidden lg:flex flex-col border-l border-edge bg-paper-warm p-6 min-h-130">
+          <div className="hidden lg:flex flex-col border-l border-edge bg-paper-warm p-6 min-h-64">
             <ScreenshotSlider
               screenshots={project.screenshots}
               projectName={project.displayName}
