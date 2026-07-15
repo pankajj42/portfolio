@@ -10,6 +10,7 @@ export default async function HomePage() {
   // so we need to filter from allProjects to get the full data
   const featuredIds = new Set(config.featuredProjects.map((p) => p.id))
   const featuredProjects = allProjects.filter((p) => featuredIds.has(p.id))
+  const nonFeaturedProjects = allProjects.filter((p) => !featuredIds.has(p.id))
 
   return (
     <>
@@ -18,7 +19,7 @@ export default async function HomePage() {
         skills={skills}
         experience={experience}
         featuredProjects={featuredProjects}
-        allProjects={allProjects}
+        allProjects={nonFeaturedProjects.concat(featuredProjects)}
       />
       <Footer config={config} />
     </>

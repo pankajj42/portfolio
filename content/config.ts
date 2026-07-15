@@ -37,9 +37,9 @@ export const config: SiteConfig = {
     projects.slrParser,
     projects.socketIoChatApp,
     projects.springBootChatApp,
-    projects.realEstate,
-    projects.chess,
     projects.pedestrianDetection,
     projects.liveVideoSurveillance,
+    projects.realEstate,
+    projects.chess,
   ],
 }
