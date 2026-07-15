@@ -12,9 +12,9 @@ export const experience: Experience[] = [
       'Designed and implemented a state-tracking model for all Hardware CLI commands, making them asynchronous — preventing process terminations that compromised EOS (Extensible Operating System) stability.',
       'Eliminated socket buffer overflow in the IPC layer, preventing service crashes and enabling reliable data flow to cloud services.',
       'Developed and enhanced CAPI models to support structured JSON output, WebAPIs, and CLI console output — used across the EOS platform.',
-      'Authored unit and integration tests in Python; maintained feature documentation and enhanced internal developer tooling.',
+      'Authored unit and integration tests in Python; maintained feature documentations and enhanced internal developer tooling.',
       'Resolved 10+ critical customer escalations, directly improving system reliability and satisfaction for enterprise network customers.',
-      'Mentored an intern through their project, providing technical guidance and code reviews.',
+      'Mentored an intern through his project, providing technical guidance and code reviews.',
     ],
   },
   {

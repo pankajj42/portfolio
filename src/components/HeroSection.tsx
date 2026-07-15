@@ -58,10 +58,10 @@ export default function HeroSection({ config }: { config: SiteConfig }) {
           <div className="max-w-md">
             <motion.p {...rise(0.2)}
               className="font-display text-[clamp(1.5rem,3vw,2.25rem)] italic font-light text-ink-2 leading-tight mb-8">
-              &ldquo;Building reliable systems<br />and thoughtful interfaces.&rdquo;
+              &ldquo;{config.tagline}&rdquo;
             </motion.p>
 
-            <motion.p {...rise(0.3)} className="text-sm text-ink-2 leading-relaxed mb-8">
+            <motion.p {...rise(0.3)} className="text-sm text-ink-2 leading-relaxed mb-8 whitespace-pre-line">
               {config.bio}
             </motion.p>
 

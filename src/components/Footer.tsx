@@ -35,8 +35,8 @@ export default function Footer({ config }: { config: SiteConfig }) {
             <div className="space-y-3">
               {[
                 { href: `mailto:${config.email}`, icon: <Mail size={13} />, label: config.email },
-                { href: config.github,   icon: <GitHubIcon size={13} />,   label: 'github.com/pankajj42' },
-                { href: config.linkedin, icon: <LinkedInIcon size={13} />, label: 'LinkedIn' },
+                { href: config.github,   icon: <GitHubIcon size={13} />,   label: config.github.replace(/^https?:\/\//, '') },
+                { href: config.linkedin, icon: <LinkedInIcon size={13} />, label: config.linkedin.replace(/^https?:\/\//, '') },
               ].map(l => (
                 <a key={l.href} href={l.href}
                   target={l.href.startsWith('mailto') ? undefined : '_blank'}

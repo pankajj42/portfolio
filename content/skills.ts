@@ -41,4 +41,9 @@ export const skills: SkillCategory[] = [
     icon: 'zap',
     skills: ['Gemini AI', 'vapi.ai', 'LLM Integration', 'Inngest', 'Convex'],
   },
+  {
+    category: 'Communication',
+    icon: 'globe',
+    skills: ['English (Professional)', 'Hindi (Native)'],
+  },
 ]

@@ -12,6 +12,7 @@ import { springBootChatAppProject } from './springboot-chat-app'
 import { ticketDashboardProject } from './ticket-dashboard'
 import { weatherAppProject } from './weather-app'
 import { welthFinanceTrackerProject } from './welth-finance-tracker'
+import { portfolioProject } from './portfolio'
 
 /**
  * To add a new project:
@@ -33,4 +34,5 @@ export const projects: Record<string, Project> = {
   slrParser: slrParserProject,
   liveVideoSurveillance: liveVideoSurveillanceProject,
   pedestrianDetection: pedestrianDetectionProject,
+  portfolio: portfolioProject,
 }
