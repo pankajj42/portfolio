@@ -4,13 +4,13 @@ import Image from 'next/image'
 import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react'
 import ScreenshotLightbox from '../ScreenshotLightbox';
 
-interface Props { screenshots: string[]; projectName: string }
+interface Props { screenshots: string[]; projectName: string; priority?: boolean }
 
 /**
  * Screenshot shown with object-contain so the full image is always visible.
  * A blurred copy of the same image fills the background edges.
  */
-function ScreenshotFrame({ src, alt, onClick }: { src: string; alt: string; onClick: () => void }) {
+function ScreenshotFrame({ src, alt, onClick, priority = false }: { src: string; alt: string; onClick: () => void; priority?: boolean }) {
   return (
     <div className="relative w-full h-full overflow-hidden rounded-xl bg-neutral-950 cursor-zoom-in"
      onClick={onClick}
@@ -35,6 +35,7 @@ function ScreenshotFrame({ src, alt, onClick }: { src: string; alt: string; onCl
         className="object-contain"
         style={{ zIndex: 1 }}
         unoptimized
+        priority={priority}
       />
       {/* Expand hint — appears on hover */}
       <div
@@ -48,7 +49,7 @@ function ScreenshotFrame({ src, alt, onClick }: { src: string; alt: string; onCl
   )
 }
 
-export default function ScreenshotSlider({ screenshots, projectName }: Props) {
+export default function ScreenshotSlider({ screenshots, projectName, priority = false }: Props) {
   const [idx, setIdx] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
@@ -70,6 +71,7 @@ export default function ScreenshotSlider({ screenshots, projectName }: Props) {
             src={screenshots[idx]}
             alt={`${projectName} screenshot ${idx + 1}`}
             onClick={() => setLightboxOpen(true)}
+            priority={priority}
           />
         </div>
 

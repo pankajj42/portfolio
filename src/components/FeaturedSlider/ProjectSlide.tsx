@@ -94,6 +94,7 @@ export default function ProjectSlide({ project, onOpen, active, index }: Props) 
             <ScreenshotSlider
               screenshots={project.screenshots}
               projectName={project.displayName}
+              priority={active && index === 0}
             />
           </div>
         </div>

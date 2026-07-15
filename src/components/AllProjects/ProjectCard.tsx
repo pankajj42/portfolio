@@ -51,6 +51,7 @@ export default function ProjectCard({ project, onOpen, index }: {
             className="object-contain group-hover:scale-[1.03] transition-transform duration-700"
             style={{ zIndex: 1 }}
             unoptimized
+            priority={index < 3} // prioritize first 3 projects for faster LCP
             sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
           />
           {project.liveUrl && (
