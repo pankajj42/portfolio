@@ -1,0 +1,13 @@
+name: Keep All Backends Alive
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -sSf https://vaulty-app-t2kp.onrender.com/health || true
+          curl -sSf https://ticketdash.onrender.com/health || true
