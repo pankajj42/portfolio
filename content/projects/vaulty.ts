@@ -40,6 +40,6 @@ The web app is live at https://vaulty-app-web.vercel.app/. Native iOS and Androi
     'Platform-abstracted secure storage — expo-secure-store on native, localStorage on web; identical async API via platform file extensions with user-scoped keys',
   ],
   screenshots: [],
-  repository: 'https://github.com/pankajj42/vaulty',
+  repository: 'https://github.com/pankajj42/vaulty-app',
   liveUrl: 'https://vaulty-app-web.vercel.app/',
 }
