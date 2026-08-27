@@ -13,6 +13,7 @@ import { ticketDashboardProject } from './ticket-dashboard'
 import { weatherAppProject } from './weather-app'
 import { welthFinanceTrackerProject } from './welth-finance-tracker'
 import { portfolioProject } from './portfolio'
+import { vaultyProject } from './vaulty'
 
 /**
  * To add a new project:
@@ -35,4 +36,5 @@ export const projects: Record<string, Project> = {
   liveVideoSurveillance: liveVideoSurveillanceProject,
   pedestrianDetection: pedestrianDetectionProject,
   portfolio: portfolioProject,
+  vaulty: vaultyProject, 
 }

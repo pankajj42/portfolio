@@ -19,6 +19,7 @@ export const config: SiteConfig = {
 
   // ── Featured: shown in horizontal slider on homepage ──────────────────────
   featuredProjects: [
+    projects.vaulty,
     projects.notesGrpc,
     projects.bankingMicroservices,
     projects.ticketDashboard,
@@ -27,6 +28,7 @@ export const config: SiteConfig = {
 
   // ── Full order: drives the all-projects grid ───────────────────────────────
   projectOrder: [
+    projects.vaulty,
     projects.notesGrpc,
     projects.bankingMicroservices,
     projects.ticketDashboard,

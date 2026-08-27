@@ -1,0 +1,45 @@
+import type { Project } from '@/types'
+
+export const vaultyProject: Project = {
+  id: 'vaulty',
+  slug: 'vaulty',
+  displayName: 'Vaulty',
+  tagline: 'Zero-knowledge encrypted notes vault: AES-256-GCM, Argon2id, Google Drive sync, single-device sessions, and biometric unlock — iOS, Android, and Web.',
+  description: `A production-grade, zero-knowledge encrypted notes vault built for iOS, Android, and Web from a single TypeScript codebase. All cryptography happens locally — AES-256-GCM with keys derived via Argon2id — so the server never sees plaintext notes, master passwords, or encryption keys. Features a custom authentication layer (Google OAuth + self-issued JWT) with single-device session enforcement, new-device email alerts, biometric unlock, auto-lock, screenshot blocking, and encrypted backup/sync to Google Drive's hidden appDataFolder with per-note conflict resolution.
+
+The web app is live at https://vaulty-app-web.vercel.app/. Native iOS and Android builds are available — [app download link placeholder]. Note: Google Auth is currently in testing mode; to log in, email pankajjangid42@gmail.com to be added as a test user.`,
+  techStack: [
+    'Expo SDK 57', 'React Native 0.86', 'TypeScript', 'NativeWind',
+    'Express 5', 'Prisma 7', 'PostgreSQL', 'Redis', 'BullMQ',
+    '@noble/hashes (Argon2id)', '@noble/ciphers (AES-256-GCM)',
+    'Google Identity Services', 'Google Drive REST API', 'Brevo',
+    'expo-secure-store', 'expo-local-authentication', 'expo-screen-capture',
+    'Jest', 'EAS Build', 'Fly.io',
+  ],
+  features: [
+    'Zero-knowledge by design — AES-256-GCM encryption with Argon2id key derivation (OWASP-recommended 9 MiB, t=2, p=1); server never sees plaintext, passwords, or keys',
+    'Cross-platform single codebase — iOS, Android, and Web via Expo SDK 57 with platform-specific modules (.web.ts / native) for auth, storage, biometrics, and cryptography',
+    'Custom JWT authentication — Google ID tokens verified cryptographically server-side; self-issued HS256 JWT with 30-day expiry; no Firebase/Supabase dependency',
+    'Two-gate session security — requireAuth verifies JWT signature; requireActiveSession checks sessionId against the database; old sessions are invalidated instantly without waiting for token expiration',
+    'New-device detection — persistent deviceId per install (survives sign-out); email alerts queued via BullMQ with geo-IP lookup and device metadata via Brevo REST API',
+    'Why custom JWT? — enables single-device enforcement and immediate session revocation, features not provided by Google OAuth tokens alone',
+    'Vault Key hierarchy — 256-bit Vault Key wrapped by Master Key (Argon2id) and Recovery Key; raw key lives only in memory and is explicitly zeroed on lock/logout',
+    'Recovery key system — 128-bit hex key shown once during vault setup; allows master password reset without data loss; passed via transient in-memory module, never through URL params or navigation state',
+    'Biometric unlock — Face ID / Fingerprint via expo-local-authentication with SecureStore requireAuthentication; stored password is only accessible after OS biometric prompt',
+    'Auto-lock — 5-minute inactivity timer + 30-second background lock via AppState listeners; full-screen PrivacyOverlay blanks the app in the recent-apps switcher',
+    'Screenshot protection — Android FLAG_SECURE via expo-screen-capture blocks system screenshots and screen recordings while the vault is unlocked',
+    'Web privacy overlay — black div injected on tab blur and visibilitychange events to prevent sensitive content appearing in browser tab previews',
+    'Google Drive sync — encrypted vault blob stored in Google Drive hidden appDataFolder; per-note last-write-wins conflict resolution using updatedAt timestamps',
+    'Offline-first — all notes stored and encrypted locally; fully functional without network; syncs when connection is available',
+    'Pure-JS cryptography — @noble/hashes (Argon2id) + @noble/ciphers (AES-256-GCM); zero native/WASM dependencies, identical vault unlock across web and native',
+    'Uniform Argon2id parameters — 9 MiB memory cost used on all platforms so vaults created on web unlock identically on native without storing KDF parameters in the bundle',
+    'Log sanitization — automatic redaction of passwords, tokens, keys, secrets, and 32+ character hex strings from all console output to prevent accidental secret leakage',
+    'Queue-based email delivery — BullMQ with Redis (Upstash) decouples slow geo-IP and third-party API calls from the login response; exponential backoff with 3 attempts',
+    'Prisma 7 + PostgreSQL — type-safe ORM with driver adapter; ActiveSession and User models with unique constraints and cascading deletion',
+    'No automatic redirects — home screen renders the correct panel (login / no-vault / unlock / unlocked) based on auth and vault state; avoids secret teleportation bugs',
+    'Platform-abstracted secure storage — expo-secure-store on native, localStorage on web; identical async API via platform file extensions with user-scoped keys',
+  ],
+  screenshots: [],
+  repository: 'https://github.com/pankajj42/vaulty',
+  liveUrl: 'https://vaulty-app-web.vercel.app/',
+}
