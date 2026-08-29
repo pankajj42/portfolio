@@ -2,7 +2,7 @@
 import { motion } from 'motion/react'
 import Image from 'next/image'
 import { ExternalLink } from 'lucide-react'
-import { GitHubIcon } from '@/components/icons/BrandIcons'
+import { GitHubIcon, AndroidIcon, AppleIcon } from '@/components/icons/BrandIcons'
 import type { Project } from '@/types'
 
 export default function ProjectCard({ project, onOpen, index }: {
@@ -87,7 +87,7 @@ export default function ProjectCard({ project, onOpen, index }: {
 
           {/* Footer */}
           <div className="flex items-center justify-between pt-3.5 border-t border-edge">
-            <div className="flex gap-1.5">
+            <div className="flex gap-1.5 flex-wrap">
               <a href={project.repository} target="_blank" rel="noopener noreferrer"
                 onClick={e => e.stopPropagation()}
                 className="w-7 h-7 rounded-full border border-edge flex items-center justify-center text-ink-3 hover:text-accent hover:border-accent/50 transition-all"
@@ -100,6 +100,22 @@ export default function ProjectCard({ project, onOpen, index }: {
                   className="w-7 h-7 rounded-full border border-edge flex items-center justify-center text-ink-3 hover:text-accent hover:border-accent/50 transition-all"
                   aria-label="Live demo">
                   <ExternalLink size={12} />
+                </a>
+              )}
+              {project.androidUrl && (
+                <a href={project.androidUrl} target="_blank" rel="noopener noreferrer"
+                  onClick={e => e.stopPropagation()}
+                  className="w-7 h-7 rounded-full border border-edge flex items-center justify-center text-ink-3 hover:text-accent hover:border-accent/50 transition-all"
+                  aria-label="Android app">
+                  <AndroidIcon size={12} />
+                </a>
+              )}
+              {project.appleUrl && (
+                <a href={project.appleUrl} target="_blank" rel="noopener noreferrer"
+                  onClick={e => e.stopPropagation()}
+                  className="w-7 h-7 rounded-full border border-edge flex items-center justify-center text-ink-3 hover:text-accent hover:border-accent/50 transition-all"
+                  aria-label="iOS app">
+                  <AppleIcon size={12} />
                 </a>
               )}
             </div>

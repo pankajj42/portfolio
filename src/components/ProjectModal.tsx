@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { X, ExternalLink, Code2 } from 'lucide-react'
-import { GitHubIcon } from './icons/BrandIcons'
+import { GitHubIcon, AndroidIcon, AppleIcon } from './icons/BrandIcons'
 import type { Project } from '@/types'
 import ScreenshotSlider from './FeaturedSlider/ScreenshotSlider'
 
@@ -63,7 +63,7 @@ export default function ProjectModal({ project, onClose }: {
                   </button>
                   <span className="label text-ink-4">Project Details</span>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                   <a href={project.repository} target="_blank" rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-4 py-2 border border-edge rounded-full label text-ink-2 hover:border-ink hover:text-ink transition-all">
                     <GitHubIcon size={12} /> GitHub
@@ -72,6 +72,18 @@ export default function ProjectModal({ project, onClose }: {
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-paper rounded-full label hover:bg-accent-dark transition-colors">
                       <ExternalLink size={12} /> Live Demo
+                    </a>
+                  )}
+                  {project.androidUrl && (
+                    <a href={project.androidUrl} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 border border-edge rounded-full label text-ink-2 hover:border-ink hover:text-ink transition-all">
+                      <AndroidIcon size={12} /> Android
+                    </a>
+                  )}
+                  {project.appleUrl && (
+                    <a href={project.appleUrl} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 border border-edge rounded-full label text-ink-2 hover:border-ink hover:text-ink transition-all">
+                      <AppleIcon size={12} /> iOS
                     </a>
                   )}
                 </div>
@@ -88,18 +100,31 @@ export default function ProjectModal({ project, onClose }: {
                 <p className="text-lg font-display italic font-light text-ink-2 mb-4">
                   {project.tagline}
                 </p>
-                {project.liveUrl && (
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 label-accent mb-8 hover:underline">
-                    <ExternalLink size={11} /> {project.liveUrl}
-                  </a>
-                )}
-                {!project.liveUrl && (
-                  <a href={project.repository} target="_blank" rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 label mb-8 hover:text-ink-2">
-                    <Code2 size={11} /> {project.repository}
-                  </a>
-                )}
+                <div className="flex flex-wrap gap-x-4 gap-y-2 mb-8">
+                  {project.liveUrl ? (
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 label-accent hover:underline">
+                      <ExternalLink size={11} /> {project.liveUrl}
+                    </a>
+                  ) : (
+                    <a href={project.repository} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 label hover:text-ink-2">
+                      <Code2 size={11} /> {project.repository}
+                    </a>
+                  )}
+                  {project.androidUrl && (
+                    <a href={project.androidUrl} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 label text-ink-3 hover:text-accent transition-colors">
+                      <AndroidIcon size={11} /> Android build
+                    </a>
+                  )}
+                  {project.appleUrl && (
+                    <a href={project.appleUrl} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 label text-ink-3 hover:text-accent transition-colors">
+                      <AppleIcon size={11} /> IOS build
+                    </a>
+                  )}
+                </div>
 
                 <hr className="rule mb-10" />
 
@@ -109,7 +134,7 @@ export default function ProjectModal({ project, onClose }: {
                   <div className="space-y-10">
                     <div>
                       <p className="label-accent mb-5">About</p>
-                      <p className="text-base text-ink-2 leading-relaxed">{project.description}</p>
+                      <p className="text-base text-ink-2 leading-relaxed whitespace-pre-line">{project.description}</p>
                     </div>
 
                     <div>

@@ -10,4 +10,6 @@ export interface Project {
   screenshots: string[]
   repository: string
   liveUrl: string
+  androidUrl?: string
+  appleUrl?: string
 }

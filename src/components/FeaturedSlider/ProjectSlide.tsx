@@ -1,6 +1,6 @@
 'use client'
 import { ExternalLink, ArrowRight } from 'lucide-react'
-import { GitHubIcon } from '../icons/BrandIcons'
+import { GitHubIcon, AndroidIcon, AppleIcon } from '../icons/BrandIcons'
 import type { Project } from '@/types'
 import ScreenshotSlider from './ScreenshotSlider'
 
@@ -33,7 +33,7 @@ export default function ProjectSlide({ project, onOpen, active, index }: Props) 
 
             <hr className="rule mb-6" />
 
-            <p className="text-sm text-ink-2 leading-relaxed mb-7">{project.description}</p>
+            <p className="text-sm text-ink-2 leading-relaxed mb-7 whitespace-pre-line">{project.description}</p>
 
             {/* Stack */}
             <div className="mb-7">
@@ -79,6 +79,22 @@ export default function ProjectSlide({ project, onOpen, active, index }: Props) 
                   onClick={e => e.stopPropagation()}
                   className="inline-flex items-center gap-1.5 px-3.5 py-2 border border-edge label text-ink-2 rounded-full hover:border-ink hover:text-ink transition-all duration-200">
                   <ExternalLink size={12} /> Live
+                </a>
+              )}
+              {project.androidUrl && (
+                <a href={project.androidUrl} target="_blank" rel="noopener noreferrer"
+                  onClick={e => e.stopPropagation()}
+                  className="w-8 h-8 rounded-full border border-edge flex items-center justify-center text-ink-3 hover:text-accent hover:border-accent/50 transition-all"
+                  aria-label="Android app">
+                  <AndroidIcon size={13} />
+                </a>
+              )}
+              {project.appleUrl && (
+                <a href={project.appleUrl} target="_blank" rel="noopener noreferrer"
+                  onClick={e => e.stopPropagation()}
+                  className="w-8 h-8 rounded-full border border-edge flex items-center justify-center text-ink-3 hover:text-accent hover:border-accent/50 transition-all"
+                  aria-label="iOS app">
+                  <AppleIcon size={13} />
                 </a>
               )}
               <button onClick={() => onOpen(project)}

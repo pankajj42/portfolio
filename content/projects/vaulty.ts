@@ -6,8 +6,8 @@ export const vaultyProject: Project = {
   displayName: 'Vaulty',
   tagline: 'Zero-knowledge encrypted notes vault: AES-256-GCM, Argon2id, Google Drive sync, single-device sessions, and biometric unlock — iOS, Android, and Web.',
   description: `A production-grade, zero-knowledge encrypted notes vault built for iOS, Android, and Web from a single TypeScript codebase. All cryptography happens locally — AES-256-GCM with keys derived via Argon2id — so the server never sees plaintext notes, master passwords, or encryption keys. Features a custom authentication layer (Google OAuth + self-issued JWT) with single-device session enforcement, new-device email alerts, biometric unlock, auto-lock, screenshot blocking, and encrypted backup/sync to Google Drive's hidden appDataFolder with per-note conflict resolution.
-
-The web app is live at https://vaulty-app-web.vercel.app/. Native iOS and Android builds are available — https://expo.dev/artifacts/eas/Q4bRa6ZaSJ79-r5omgetbGum1OQVx_Zff1fMh3Ng_lk.apk. Note: Google Auth is currently in testing mode; to log in, email pankajjangid42@gmail.com to be added as a test user.`,
+  
+  Note: Google Auth is currently in testing mode; to log in, email pankajjangid42@gmail.com to be added as a test user.`,
   techStack: [
     'Expo SDK 57', 'React Native 0.86', 'TypeScript', 'NativeWind',
     'Express 5', 'Prisma 7', 'PostgreSQL', 'Redis', 'BullMQ',
@@ -42,4 +42,5 @@ The web app is live at https://vaulty-app-web.vercel.app/. Native iOS and Androi
   screenshots: [],
   repository: 'https://github.com/pankajj42/vaulty-app',
   liveUrl: 'https://vaulty-app-web.vercel.app/',
+  androidUrl: 'https://expo.dev/artifacts/eas/Q4bRa6ZaSJ79-r5omgetbGum1OQVx_Zff1fMh3Ng_lk.apk',
 }
